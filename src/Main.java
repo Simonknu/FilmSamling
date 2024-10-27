@@ -32,7 +32,7 @@ public class Main {
             Boolean isInColorBoolean = true;
             System.out.println("title of the movie: ");
             String title = scanner.next();
-            System.out.println("Director: ");
+            System.out.println("Name of the director: ");
             String director = scanner.next();
             int yearCreated = 0;
             while (true) {
