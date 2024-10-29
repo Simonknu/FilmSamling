@@ -47,34 +47,100 @@ public class MovieList {
         } else {
             System.out.println("This are all the movies that contain " + name +
                     "Which one do you want to choose");
+            scanner.nextLine();
+            String input = scanner.nextLine();
+            for (Movie i: movieArrayList){
+                if (i.getTitle().contains(input)){
+                    onlyMovie = i;
+                }
+
+            }
+            System.out.println("Title: " + onlyMovie.getTitle());
+            System.out.println("Director: " + onlyMovie.getDirector());
+            System.out.println("Year of Creation: " + onlyMovie.getYearCreated());
+            System.out.println(onlyMovie.getIsInColor() ? "It is in color" : "It is not in color");
+            System.out.println("Length in minutes: " + onlyMovie.getLengthInMinutes());
+            System.out.println("Genre: " + onlyMovie.getGenre());
         }
 
 
     }
 
-    public void editMovie(String) {
-        System.out.println("What would you like to edit? \n1. Title \n2. Director \n3. Year of creation \n4. Is in color \n5. Length in minutes \n6. Genre \nChoose a number of the list");
-        scanner.nextLine(); // make sure the scanner works properly
-        int input = 0;
-        while (true){
-        if (scanner.hasNextInt()){
-            input = scanner.nextInt();
-            break;
-        } else {
-            System.out.println("choose one of the numbers in the menu");
+    public void editMovie() {
+        System.out.println("Which movie would you like to edit?");
+        String movieName = scanner.nextLine();
+        Movie chosenMovie = null;
+        int numOfMovies = 0;
+        for (Movie i : movieArrayList) {
+            if (i.getTitle().contains(movieName)) {
+                chosenMovie = i;
+                numOfMovies++;
+                System.out.println(i.getTitle());
+            }
         }
+        if (numOfMovies == 0) {
+            System.out.println("There is no movies that contain " + name);
+        } else if (numOfMovies > 1) {
+            System.out.println("These are all the movies that contain " + name + "\nWhich one do you want to edit?");
+            scanner.nextLine();
+            String input = scanner.nextLine();
+            for (Movie i : movieArrayList) {
+                if (i.getTitle().contains(input)) {
+                    i = chosenMovie;
+                }
+            }
+        }
+
+        System.out.println("What would you like to edit? \n1. Title \n2. Director \n3. Year of creation \n4. Is in color \n5. Length in minutes \n6. Genre \nChoose a number of the list");
+
+        int input = 0;
+        while (true) {
+
+            if (scanner.hasNextInt()) {
+                input = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("choose one of the numbers in the menu");
+            }
         }
         switch (input) {
             case 1 -> {
                 System.out.println("Write the new title you want to give the movie: ");
+                scanner.nextLine();
                 String title = scanner.nextLine();
-                movie
+                chosenMovie.setTitle(title);
             }
-            case 2 ->
-            case 3 ->
-            case 4 ->
-            case 5 ->
+            case 2 -> {
+                System.out.println("Write the new director you want to give the movie: ");
+                scanner.nextLine();
+                String director = scanner.nextLine();
+                chosenMovie.setDirector(director);
+            }
+            case 3 -> {
+                System.out.println("Write the new year of creation you want to give the movie: ");
+                scanner.nextLine();
+                int yearCreated = scanner.nextInt();
+                chosenMovie.setYearCreated(yearCreated);
+            }
+            case 4 -> {
+                System.out.println("Write the new state of color you want to give the movie: ");
+                scanner.nextLine();
+                String isInColor = scanner.nextLine();
+                 switch (isInColor) {
+                    case "yes", "ye", "y" -> chosenMovie.setInColor(true);
+                    default -> chosenMovie.setInColor(false);
+                };
+            }
+            case 5 -> {
+                System.out.println("Write the new genre you want to give the movie: ");
+                scanner.nextLine();
+                String genre = scanner.nextLine();
+                chosenMovie.setGenre(genre);
+
+            }
         }
+        System.out.println("You have edited the film :D");
+
 
     }
 
