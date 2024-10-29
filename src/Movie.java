@@ -35,4 +35,25 @@ public class Movie {
         return genre;
     }
 
+    public void setTitle(String newTitle){
+        title = newTitle;
+    }
+    public void setDirector(String newDirector){
+        director = newDirector;
+    }
+    public void setYearCreated(int newYearCreated){
+        yearCreated = newYearCreated;
+    }
+
+    public void setInColor(boolean inColor) {
+        isInColor = inColor;
+    }
+
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 }
