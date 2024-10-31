@@ -79,7 +79,6 @@ public class MovieList {
             System.out.println("There is no movies that contain " + movieName);
         } else if (numOfMovies > 1) {
             System.out.println("These are all the movies that contain " + movieName + "\nWhich one do you want to edit?");
-            scanner.nextLine();
             String input = scanner.nextLine();
             for (Movie i : movieArrayList) {
                 if (i.getTitle().contains(input)) {
@@ -114,7 +113,7 @@ public class MovieList {
                 chosenMovie.setDirector(director);
             }
             case 3 -> {
-                System.out.println("Write the new year of creation you want to give the movie: ");
+
                 int yearCreated = 0;
                 while (true) {
                     System.out.println("Write the new year of creation you want to give the movie: ");
@@ -143,6 +142,7 @@ public class MovieList {
                 while (true) {
                     System.out.println("Write the new length in minutes you want to give the movie: ");
                     try {
+                        scanner.nextLine();
                         lengthInMinutes = Integer.parseInt(scanner.nextLine());
                         break;
                     } catch (NumberFormatException e) {
