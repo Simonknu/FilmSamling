@@ -3,11 +3,11 @@ public class Controller {
 
 
     public Controller(){
-        movieList = new MovieList("movieList");
+        movieList = new MovieList();
     }
 
     public void createMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
-        movieList.createMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+        movieList.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
     public void showMovieList(){
         movieList.showMovieList();

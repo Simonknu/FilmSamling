@@ -5,7 +5,11 @@ public class UserInterface {
     private Controller controller;
     static Scanner scanner = new Scanner(System.in);
 
-   public void startProgram() {
+    public UserInterface() {
+        controller = new Controller();
+    }
+
+    public void startProgram() {
 
         outerLoop:
         while (true) {
@@ -13,11 +17,10 @@ public class UserInterface {
 
             String input = scanner.nextLine();
             input.toLowerCase(Locale.ROOT);
-            switch (input){
-                case "new movie", "new", "create", "add", "add movie" -> {
-                    createMovie();
+            switch (input) {
+                case "new movie", "new", "create", "add", "add movie" -> createMovie();
 
-                }
+
                 case "movie list", "show movies", "list", "movies", "show list", "show movie list" -> {
                     controller.showMovieList();
                 }
@@ -37,7 +40,8 @@ public class UserInterface {
         }
 
     }
-    public void createMovie(){
+
+    public void createMovie() {
         Boolean isInColorBoolean;
         System.out.println("title of the movie: ");
         String title = scanner.nextLine();
@@ -46,27 +50,32 @@ public class UserInterface {
         int yearCreated = 0;
         while (true) {
             System.out.println("Year of creation: ");
-
-            if (scanner.hasNextInt()) {
-                yearCreated = scanner.nextInt();
+            try {
+                yearCreated = Integer.parseInt(scanner.nextLine());
                 break;
-            } else {
-                System.out.println("That is not a year. Try again");
-                scanner.nextLine();
+            } catch (NumberFormatException e) {
+                System.out.println("That is not a valid year. Try again.");
             }
-            scanner.nextLine();
         }
         System.out.println("Is it in color? ");
-        scanner.nextLine();
+
         String isInColor = scanner.nextLine();
-        isInColorBoolean = switch (isInColor){
+        isInColorBoolean = switch (isInColor) {
             case "yes", "ye", "y" -> true;
             default -> false;
         };
-        System.out.println("Length in minutes: ");
-        int lengthInMinutes = scanner.nextInt();
+        int lengthInMinutes = 0;
+        while (true) {
+            System.out.println("Length in minutes: ");
+            try {
+                lengthInMinutes = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("That is not a valid Length. Try again.");
+            }
+        }
+
         System.out.println("Genre: ");
-        scanner.nextLine();
         String genre = scanner.nextLine();
 
         controller.createMovie(title, director, yearCreated, isInColorBoolean, lengthInMinutes, genre);
@@ -76,4 +85,5 @@ public class UserInterface {
 
 
 }
+
 
