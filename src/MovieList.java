@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class MovieList {
     private ArrayList<Movie> movieArrayList;
-    private String name;
     static Scanner scanner = new Scanner(System.in);
 
 
-    public MovieList(String name) {
-        this.name = name;
-        this.movieArrayList = new ArrayList<Movie>();
+    public ArrayList<Movie> getMovieArrayList() {
+        return movieArrayList;
     }
 
-    public void createMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public MovieList() {
+        this.movieArrayList = new ArrayList<>();
+    }
+
+    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         Movie movie = new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
         movieArrayList.add(movie);
     }
@@ -25,7 +27,7 @@ public class MovieList {
     }
 
     public void showMovie(String name) {
-        name.toLowerCase(Locale.ROOT);
+        name = name.toLowerCase(Locale.ROOT);
         int numOfMovies = 0;
         Movie onlyMovie = null;
         for (Movie i : movieArrayList) {
@@ -37,33 +39,29 @@ public class MovieList {
         }
         if (numOfMovies == 0) {
             System.out.println(name + " We couldn´t find any movies that contain " + name);
-        } else if (numOfMovies == 1) {
-            System.out.println("Title: " + onlyMovie.getTitle());
-            System.out.println("Director: " + onlyMovie.getDirector());
-            System.out.println("Year of Creation: " + onlyMovie.getYearCreated());
-            System.out.println(onlyMovie.getIsInColor() ? "It is in color" : "It is not in color");
-            System.out.println("Length in minutes: " + onlyMovie.getLengthInMinutes());
-            System.out.println("Genre: " + onlyMovie.getGenre());
-        } else {
+        } else if (numOfMovies > 1) {
             System.out.println("This are all the movies that contain " + name +
                     "Which one do you want to choose");
             scanner.nextLine();
             String input = scanner.nextLine();
-            for (Movie i: movieArrayList){
-                if (i.getTitle().contains(input)){
+            for (Movie i : movieArrayList) {
+                if (i.getTitle().contains(input)) {
                     onlyMovie = i;
-                }
 
+                }
             }
+        } else {
+
+
             System.out.println("Title: " + onlyMovie.getTitle());
             System.out.println("Director: " + onlyMovie.getDirector());
             System.out.println("Year of Creation: " + onlyMovie.getYearCreated());
             System.out.println(onlyMovie.getIsInColor() ? "It is in color" : "It is not in color");
             System.out.println("Length in minutes: " + onlyMovie.getLengthInMinutes());
             System.out.println("Genre: " + onlyMovie.getGenre());
+
+
         }
-
-
     }
 
     public void editMovie() {
@@ -79,9 +77,9 @@ public class MovieList {
             }
         }
         if (numOfMovies == 0) {
-            System.out.println("There is no movies that contain " + name);
+            System.out.println("There is no movies that contain " + movieName);
         } else if (numOfMovies > 1) {
-            System.out.println("These are all the movies that contain " + name + "\nWhich one do you want to edit?");
+            System.out.println("These are all the movies that contain " + movieName + "\nWhich one do you want to edit?");
             scanner.nextLine();
             String input = scanner.nextLine();
             for (Movie i : movieArrayList) {
@@ -126,10 +124,11 @@ public class MovieList {
                 System.out.println("Write the new state of color you want to give the movie: ");
                 scanner.nextLine();
                 String isInColor = scanner.nextLine();
-                 switch (isInColor) {
+                switch (isInColor) {
                     case "yes", "ye", "y" -> chosenMovie.setInColor(true);
                     default -> chosenMovie.setInColor(false);
-                };
+                }
+                ;
             }
             case 5 -> {
                 System.out.println("Write the new genre you want to give the movie: ");
@@ -143,6 +142,7 @@ public class MovieList {
 
 
     }
-
 }
+
+
 

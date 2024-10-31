@@ -5,6 +5,10 @@ public class UserInterface {
     private Controller controller;
     static Scanner scanner = new Scanner(System.in);
 
+   public UserInterface(){
+       controller = new Controller();
+   }
+
    public void startProgram() {
 
         outerLoop:
@@ -14,10 +18,9 @@ public class UserInterface {
             String input = scanner.nextLine();
             input.toLowerCase(Locale.ROOT);
             switch (input){
-                case "new movie", "new", "create", "add", "add movie" -> {
-                    createMovie();
+                case "new movie", "new", "create", "add", "add movie" ->  createMovie();
 
-                }
+
                 case "movie list", "show movies", "list", "movies", "show list", "show movie list" -> {
                     controller.showMovieList();
                 }
