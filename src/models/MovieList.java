@@ -86,7 +86,7 @@ public class MovieList {
     // check if movie exist and then selects it for different actions like editing or deleting
     public boolean checkIfMovieExist(String movieTitle) {
         for (Movie i : movieArrayList) {
-            if (i.getTitle().contains(movieTitle)) {
+            if (i.getTitle().toLowerCase(Locale.ROOT).contains(movieTitle)) {
                 selectedMovie = i;
                 return true;
             }

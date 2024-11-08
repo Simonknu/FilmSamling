@@ -1,0 +1,3 @@
+First Movie,Simon Knudsen,1976,yes,200,action
+Second Movie,Alberto,2019,no,120,comedy
+Third Movie,Rodolfo Ramirez,1945,no,90,Drama

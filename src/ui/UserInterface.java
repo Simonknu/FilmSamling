@@ -26,7 +26,7 @@ public class UserInterface {
 
         outerLoop:
         while (true) {
-            out.print("You can: \n1. Create new movie \n2. Show movie list \n3. Search a movie \n4. Edit a movie \n5. Delete a movie from the list \n6. Sort movies \n7. Exit program \nChose a number \n->");
+            out.print("You can: \n1. Create new movie \n2. Show movie list \n3. Search a movie \n4. Edit a movie \n5. Delete a movie from the list \n6. Sort movies \n7. Exit program \nChose a number \n-> ");
 
             String input = scanner.nextLine();
             input.toLowerCase(Locale.ROOT);
@@ -91,7 +91,7 @@ public class UserInterface {
         String genre = scanner.nextLine();
 
         controller.createMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
-        out.println("You have created a new models.Movie :D");
+        out.println("You have created a new movie :D");
 
     }
 

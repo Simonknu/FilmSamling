@@ -56,14 +56,9 @@ public class Controller {
     }
 
     public String movieToString(String movieName){
-        Movie currentMovie = null;
-        for (Movie i : movieList.getMovieArrayList()){
-            if (i.getTitle().contains(movieName)){
-                currentMovie = i;
-            }
+        return movieList.getSelectedMovie().toString();
         }
-        return currentMovie.toString();
-    }
+        
 
     public String sortedMovies(int sorting){
 
