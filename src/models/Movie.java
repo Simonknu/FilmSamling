@@ -1,12 +1,16 @@
+package models;
+
+import java.util.Locale;
+
 public class Movie {
     private String title;
     private String director;
     private int yearCreated;
-    private boolean isInColor;
+    private String isInColor;
     private int lengthInMinutes;
     private String genre;
 
-    public Movie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public Movie(String title, String director, int yearCreated, String isInColor, int lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
         this.yearCreated = yearCreated;
@@ -25,9 +29,11 @@ public class Movie {
     public int getYearCreated(){
         return yearCreated;
     }
-    public boolean getIsInColor(){
+    public String getIsInColor(){
         return isInColor;
     }
+
+
     public int getLengthInMinutes(){
         return lengthInMinutes;
     }
@@ -44,16 +50,24 @@ public class Movie {
     public void setYearCreated(int newYearCreated){
         yearCreated = newYearCreated;
     }
-
-    public void setInColor(boolean inColor) {
-        isInColor = inColor;
+    public void setInColor(String color){
+       isInColor = color;
     }
-
     public void setLengthInMinutes(int lengthInMinutes) {
         this.lengthInMinutes = lengthInMinutes;
     }
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + title + "\n" +
+                "Director: " + director + "\n" +
+                "Created: " + yearCreated + "\n" +
+                "Length: " + lengthInMinutes + " minutes" + "\n" +
+                "Is in color: " + getIsInColor() + "\n" +
+                "Genre: " + genre + "\n";
     }
 }
